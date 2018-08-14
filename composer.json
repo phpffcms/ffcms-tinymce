@@ -1,0 +1,25 @@
+{
+  "name": "phpffcms/ffcms-tinymce",
+  "description": "TinyMCE widget for FFCMS 3",
+  "type": "library",
+  "keywords": ["wysiwyg", "php", "html", "css"],
+  "homepage": "http://ffcms.org",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pyatinskiy M.M.",
+      "email": "zenn1989@gmail.com",
+      "homepage": "http://ffcms.ru"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "tinymce/tinymce": "4.*@stable"
+  },
+  "autoload": {
+    "psr-0": {
+      "Apps\\": "src/",
+      "Widget\\": "src/"
+    }
+  }
+}
