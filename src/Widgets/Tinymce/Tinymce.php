@@ -4,16 +4,22 @@ namespace Widgets\Tinymce;
 
 use Ffcms\Core\App;
 use Ffcms\Core\Arch\Widget as AbstractWidget;
+use Ffcms\Core\Helper\Type\Arr;
 
-
+/**
+ * Class Tinymce. TinyMCE widget for FFCMS
+ * @package Widgets\Tinymce
+ */
 class Tinymce extends AbstractWidget
 {
-    const VERSION = '4.5.1';
+    const VERSION = '4.8.2';
+
 	public $targetClass;
     public $language;
     public $config;
-    public $jsConfig;
+
     private $baseUrl;
+    private $root;
 
     /**
      * Pass init params and initialize object
@@ -21,16 +27,17 @@ class Tinymce extends AbstractWidget
      */
 	public function init(): void
 	{
-		if ($this->language === null) {
+		if (!$this->language) {
 			$this->language = App::$Request->getLanguage();
 		}
-        if ($this->targetClass === null) {
+        if (!$this->targetClass) {
             $this->targetClass = 'wysiwyg';
         }
-        if ($this->config === null || !Arr::in($this->config, ['config-small', 'config-full', 'config-medium'])) {
-            $this->config = 'config-default';
+        if ($this->config === null || !Arr::in($this->config, ['small', 'full', 'medium'])) {
+            $this->config = 'small';
         }
-        $this->baseUrl = App::$Alias->scriptUrl . '/vendor/phpffcms/ffcms-ckeditor/assets';
+        $this->baseUrl = App::$Alias->scriptUrl . '/vendor/phpffcms/ffcms-tinymce/assets';
+        $this->root = realpath(__DIR__ . '/../../');
     }
     
     /**
@@ -39,6 +46,6 @@ class Tinymce extends AbstractWidget
      */
 	public function display(): ?string 
 	{
-        return null;
+        return App::$View->render('widgets/tinymce/' . $this->config, [], $this->root . '/Apps/View/Admin/default');
 	}
 }
