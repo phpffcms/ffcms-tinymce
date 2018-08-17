@@ -46,6 +46,11 @@
             var posTop = (screen.height/2)-(selectHeight/2);
 
             window.open('<?= \App::$Alias->scriptUrl ?>/api/tinymce/browse?lang=' + script_lang + '&callbackId=' + field_name, '_blank', "toolbar=no, menubar=on, status=no, directories=no, width=" + selectWidth + ", height=" + selectHeight + ", top=" + posTop + ", left=" + posLeft);
+        },
+        setup: function(e) { // save values to textarea hidden
+            e.on('change', function(){
+                e.save();
+            });
         }
     });
 </script>
