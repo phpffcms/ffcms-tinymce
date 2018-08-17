@@ -19,7 +19,7 @@
   "autoload": {
     "psr-0": {
       "Apps\\": "src/",
-      "Widget\\": "src/"
+      "Widgets\\": "src/"
     }
   }
 }
