@@ -20,6 +20,7 @@ class Tinymce extends AbstractWidget
 
     private $baseUrl;
     private $root;
+    private $env;
 
     /**
      * Pass init params and initialize object
@@ -36,8 +37,10 @@ class Tinymce extends AbstractWidget
         if ($this->config === null || !Arr::in($this->config, ['small', 'full', 'medium'])) {
             $this->config = 'small';
         }
+
         $this->baseUrl = App::$Alias->scriptUrl . '/vendor/phpffcms/ffcms-tinymce/assets';
         $this->root = realpath(__DIR__ . '/../../');
+        $this->env = env_name ?? 'Front';
     }
     
     /**
@@ -46,6 +49,6 @@ class Tinymce extends AbstractWidget
      */
 	public function display(): ?string 
 	{
-        return App::$View->render('widgets/tinymce/' . $this->config, [], $this->root . '/Apps/View/Admin/default');
+        return App::$View->render('widgets/tinymce/' . $this->config, [], $this->root . '/Apps/View/' . $this->env . '/default');
 	}
 }
