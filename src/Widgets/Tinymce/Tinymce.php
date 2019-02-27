@@ -34,7 +34,7 @@ class Tinymce extends AbstractWidget
         if (!$this->targetClass) {
             $this->targetClass = 'wysiwyg';
         }
-        if ($this->config === null || !Arr::in($this->config, ['small', 'full', 'medium'])) {
+        if (!$this->config || !Arr::in($this->config, ['small', 'full', 'medium'])) {
             $this->config = 'small';
         }
 
@@ -49,6 +49,7 @@ class Tinymce extends AbstractWidget
      */
 	public function display(): ?string 
 	{
-        return App::$View->render('widgets/tinymce/' . $this->config, [], $this->root . '/Apps/View/' . $this->env . '/default');
+	    App::$View->addFallback($this->root . '/Apps/View/' . $this->env . '/default');
+        return App::$View->render('widgets/tinymce/' . $this->config);
 	}
 }

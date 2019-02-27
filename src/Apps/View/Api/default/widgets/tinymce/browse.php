@@ -15,7 +15,7 @@ use Ffcms\Core\Helper\Type\Str;
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= \App::$Alias->scriptUrl ?>/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="<?= \App::$Alias->scriptUrl ?>/vendor/components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<?= \App::$Alias->scriptUrl ?>/vendor/phpffcms/ffcms-assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
     <title><?= __('FFCMS file browser') ?></title>
     <script>
         function callBack(url) {
@@ -45,9 +45,9 @@ use Ffcms\Core\Helper\Type\Str;
                         <?php if ($type === 'images'): ?>
                             <img src="<?= \App::$Alias->scriptUrl . '/' . $file ?>" class="card-img-top" />
                         <?php elseif ($type === 'flash'): ?>
-                            <div class="text-center"><i class="fa fa-file-video-o fa-5x"></i></div>
+                            <div class="text-center"><i class="far fa-file-video-o fa-5x"></i></div>
                         <?php else: ?>
-                            <div class="text-center"><i class="fa fa-file fa-5x"></i></div>
+                            <div class="text-center"><i class="far fa-file-alt fa-5x"></i></div>
                         <?php endif; ?>
                         <div class="m-1">
                             <div class="row text-center">
@@ -57,10 +57,10 @@ use Ffcms\Core\Helper\Type\Str;
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <a href="javascript::void(0)" onclick="return callBack('<?= \App::$Alias->scriptUrl . '/' . $file ?>')" class="btn btn-success btn-sm btn-block"><i class="fa fa-check"></i> <?= __('Select') ?></a>
+                                    <a href="javascript::void(0)" onclick="return callBack('<?= \App::$Alias->scriptUrl . '/' . $file ?>')" class="btn btn-success btn-sm btn-block"><i class="fas fa-check"></i> <?= __('Select') ?></a>
                                 </div>
                                 <div class="col-6">
-                                    <a href="<?= \App::$Alias->scriptUrl . '/' . $file ?>" target="_blank" class="btn btn-secondary btn-sm btn-block"><i class="fa fa-eye"></i> <?= __('Preview') ?></a>
+                                    <a href="<?= \App::$Alias->scriptUrl . '/' . $file ?>" target="_blank" class="btn btn-secondary btn-sm btn-block"><i class="fas fa-eye"></i> <?= __('Preview') ?></a>
                                 </div>
                             </div>
                         </div>
