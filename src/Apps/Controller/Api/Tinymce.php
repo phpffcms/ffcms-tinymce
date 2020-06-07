@@ -31,6 +31,7 @@ class Tinymce extends Controller
     {
         $this->root = realpath(__DIR__ . '/../../../');
         App::$Translate->append($this->root . '/i18n/Api/ru/Tinymce.php');
+        $this->view->addFallback($this->root . '/Apps/View/Api/default/');
         parent::before();
     }
 
@@ -42,12 +43,12 @@ class Tinymce extends Controller
      */
     public function actionBrowse($type = 'images'): ?string
     {
-        $callbackId = $this->request->query->get('callbackId', false);
+        //$callbackId = $this->request->query->get('callbackId', false);
         if (!App::$User->isAuth() || !App::$User->identity()->role->can('global/file')) {
             throw new NativeException('Permission denied');
         }
 
-        if (!array_key_exists($type, static::UPLOAD_TYPES) || !Any::isArray(static::UPLOAD_TYPES[$type]) || !$callbackId) {
+        if (!array_key_exists($type, static::UPLOAD_TYPES) || !Any::isArray(static::UPLOAD_TYPES[$type])) {
             throw new NativeException('Wrong file type!');
         }
 
@@ -60,12 +61,10 @@ class Tinymce extends Controller
             $fileUri[] = trim(Str::replace(DIRECTORY_SEPARATOR, '/', $newName), '/');
         }
 
-        return App::$View->render('widgets/tinymce/browse', [
+        return $this->view->render('widgets/tinymce/browse', [
             'files' => $fileUri,
-            'type' => $type,
-            'callbackId' => $callbackId,
-            'root' => $this->root . '/Apps/View/Api/default/'
-        ], $this->root . '/Apps/View/Api/default/');
+            'type' => $type
+        ]);
     }
 
     /**
@@ -76,13 +75,12 @@ class Tinymce extends Controller
      */
     public function actionUpload(): ?string
     {
-        $callbackId = $this->request->query->get('callbackId', false);
-        if (!App::$User->isAuth() || !App::$User->identity()->role->can('global/upload') || !$callbackId) {
+        if (!App::$User->isAuth() || !App::$User->identity()->role->can('global/upload')) {
             throw new NativeException('Permission denied');
         }
 
         $allow = [];
-        foreach (static::UPLOAD_TYPES as $name => $extarray) {
+        foreach (static::UPLOAD_TYPES as $extarray) {
             foreach ($extarray as $ext) {
                 $allow[] = $ext;
             }
@@ -95,11 +93,9 @@ class Tinymce extends Controller
         }
 
         // render output view
-        return App::$View->render('widgets/tinymce/upload', [
-            'callbackId' => $callbackId,
-            'root' => $this->root . '/Apps/View/Api/default/',
+        return $this->view->render('widgets/tinymce/upload', [
             'model' => $model,
             'path' => $path
-        ], $this->root . '/Apps/View/Api/default/');
+        ]);
     }
 }

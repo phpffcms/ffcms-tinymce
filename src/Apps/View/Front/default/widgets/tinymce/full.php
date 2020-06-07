@@ -17,9 +17,9 @@
         height: 500,
         menubar: false,
         plugins: [
-            'advlist autolink lists link image imagetools charmap print preview anchor textcolor',
+            'advlist autolink lists link image imagetools charmap print preview anchor',
             'searchreplace visualblocks code',
-            'insertdatetime media table contextmenu paste wordcount pagebreak codesample'
+            'insertdatetime media table paste wordcount pagebreak codesample'
         ],
         toolbar: 'formatselect | insert | bold italic subscript superscript forecolor backcolor blockquote codesample | removeformat | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | pagebreak code',
         image_advtab: true,

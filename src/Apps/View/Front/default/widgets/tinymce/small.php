@@ -17,11 +17,11 @@
         height: 150,
         menubar: false,
         plugins: [
-            'advlist autolink lists link image imagetools charmap textcolor',
+            'advlist autolink lists link image imagetools charmap',
             'visualblocks code',
-            'media table contextmenu paste codesample'
+            'media paste codesample'
         ],
-        toolbar: 'bold italic subscript superscript forecolor backcolor blockquote codesample | removeformat | bullist numlist | table | insert',
+        toolbar: 'bold italic subscript superscript forecolor backcolor blockquote codesample | removeformat | bullist numlist | insert',
         image_advtab: false,
         visualblocks_default_state: false,
         end_container_on_empty_block: true,
@@ -32,6 +32,7 @@
         convert_urls: false,
         relative_urls: false,
         language_url: '<?= \App::$Alias->scriptUrl ?>/vendor/phpffcms/ffcms-tinymce/assets/js/langs/' + script_lang + '.js',
+        language: script_lang,
         setup: function(e) { // save values to textarea hidden
             e.on('change', function(){
                 e.save();

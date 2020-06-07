@@ -5,8 +5,6 @@ use Ffcms\Core\Helper\Type\Str;
 /** @var \Ffcms\Templex\Template\Template $this */
 /** @var array|null $files */
 /** @var string $type */
-/** @var string $callbackId */
-/** @var string $root */
 
 ?>
 <!DOCTYPE html>
@@ -14,13 +12,12 @@ use Ffcms\Core\Helper\Type\Str;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= \App::$Alias->scriptUrl ?>/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?= \App::$Alias->scriptUrl ?>/vendor/phpffcms/ffcms-assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="<?= \App::$Alias->scriptUrl ?>/vendor/phpffcms/ffcms-assets/node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <title><?= __('FFCMS file browser') ?></title>
     <script>
-        function callBack(url) {
-            var callbackId = '<?= $callbackId ?>';
-            window.opener.setResponseUrl(callbackId, url);
+        function callback(url) {
+            window.opener.setResponseUrl(url);
             window.close();
         }
     </script>
@@ -35,7 +32,7 @@ use Ffcms\Core\Helper\Type\Str;
 
 <div class="container-fluid">
     <h2 class="text-center"><?= __('File browser') ?></h2>
-    <?= \App::$View->render('widgets/tinymce/_tabs', ['callbackId' => $callbackId], $root) ?>
+    <?= \App::$View->render('widgets/tinymce/_tabs') ?>
 
     <div class="row">
         <?php if ($files && count($files) > 0): ?>
@@ -57,7 +54,7 @@ use Ffcms\Core\Helper\Type\Str;
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <a href="javascript::void(0)" onclick="return callBack('<?= \App::$Alias->scriptUrl . '/' . $file ?>')" class="btn btn-success btn-sm btn-block"><i class="fas fa-check"></i> <?= __('Select') ?></a>
+                                    <a href="#" onclick="return callback('<?= \App::$Alias->scriptUrl . '/' . $file ?>')" class="btn btn-success btn-sm btn-block"><i class="fas fa-check"></i> <?= __('Select') ?></a>
                                 </div>
                                 <div class="col-6">
                                     <a href="<?= \App::$Alias->scriptUrl . '/' . $file ?>" target="_blank" class="btn btn-secondary btn-sm btn-block"><i class="fas fa-eye"></i> <?= __('Preview') ?></a>
