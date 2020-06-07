@@ -11,5 +11,8 @@ return [
     'Files not found' => 'Файлы не найдены',
     'File' => 'Файл',
     'Choice file from local machine and upload it to server' => 'Выберите файл с локального компьютера и загрузите',
-    'Send' => 'Отправить'
+    'Send' => 'Отправить',
+    'Date' => 'Дата',
+    'Size, mb' => 'Размер, mb',
+    'Actions' => 'Действия'
 ];
