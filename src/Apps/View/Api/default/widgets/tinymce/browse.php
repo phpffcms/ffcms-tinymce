@@ -18,6 +18,7 @@ use Ffcms\Templex\Url\Url;
     <link rel="stylesheet" href="<?= \App::$Alias->scriptUrl ?>/vendor/phpffcms/ffcms-assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
     <link rel="stylesheet" href="<?= \App::$Alias->scriptUrl ?>/vendor/phpffcms/ffcms-assets/node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?= \App::$Alias->scriptUrl ?>/vendor/phpffcms/ffcms-assets/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="<?= \App::$Alias->scriptUrl ?>/vendor/phpffcms/ffcms-assets/node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css" />
     <title><?= __('FFCMS file browser') ?></title>
     <script>
         function callback(url) {
@@ -68,7 +69,7 @@ use Ffcms\Templex\Url\Url;
 
                     $table->row([
                         ['text' => $icon, 'html' => true],
-                        ['text' => Url::a([\App::$Alias->scriptUrl . '/' . $file], $file, ['target' => '_blank', 'class' => 'link-target']), 'html' => true],
+                        ['text' => Url::a([\App::$Alias->scriptUrl . '/' . $file], $file, ['class' => 'link-target' . ($type === 'images' ? ' fancybox' : '')]), 'html' => true],
                         ['text' => $fileDate],
                         ['text' => $fileSize],
                         ['text' => $btngrp->display(), 'html' => true]
@@ -91,6 +92,8 @@ use Ffcms\Templex\Url\Url;
 <script src="<?= \App::$Alias->scriptUrl ?>/vendor/phpffcms/ffcms-assets/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?= \App::$Alias->scriptUrl ?>/vendor/phpffcms/ffcms-assets/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 
+<script src="<?= \App::$Alias->scriptUrl ?>/vendor/phpffcms/ffcms-assets/node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+
 <script>
 $(function(){
     $('.table-select tr').on('click', function(e){
@@ -106,6 +109,8 @@ $(function(){
         e.preventDefault();
         callback(lnk);
     });
+
+    $('.fancybox').fancybox();
 
     var dt = [];
     dt['ru'] = {
