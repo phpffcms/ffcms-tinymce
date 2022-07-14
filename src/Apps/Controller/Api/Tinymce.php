@@ -17,7 +17,7 @@ use Ffcms\Core\Helper\Type\Str;
 class Tinymce extends Controller
 {
     const UPLOAD_TYPES = [
-        'images' => ['.jpg', '.jpeg', '.gif', '.png', '.bmp', '.svg'],
+        'images' => ['.jpg', '.jpeg', '.gif', '.png', '.bmp', '.webp', '.svg'],
         'files' => ['.zip', '.rar', '.gz', '.tar', '.bz2', '.bz', '.doc', '.docx', '.xls', '.xlsx', '.txt', '.csv', '.odt', '.pdf', '.djvu'],
         'video' => ['.swf', '.fla', '.flv', '.mp4', 'mpeg4', '.ogg', '.mov', '.avi', '.webm', '.wmv', '.3gp']
     ];
