@@ -14,20 +14,20 @@
 
     tinymce.init({
         selector: '.wysiwyg',
-        height: 150,
+        height: 200,
         menubar: false,
         plugins: [
             'advlist autolink lists link image imagetools charmap',
             'visualblocks code',
             'media paste codesample'
         ],
-        toolbar: 'bold italic subscript superscript forecolor backcolor blockquote codesample | removeformat | bullist numlist | insert',
+        toolbar: 'bold italic subscript superscript forecolor blockquote | removeformat | bullist numlist | insert',
         image_advtab: false,
         visualblocks_default_state: false,
         end_container_on_empty_block: true,
         default_link_target: "_blank",
         paste_as_text: true,
-        valid_elements: 'strong,i,em,sup,sub,span[class,style,id],a[class,style,id,href],img[src,alt,class],ul[class,style,id],li[class,style,id],ol[class,style],table[class,style],tr[class,style],td[class,style],thead,tbody',
+        valid_elements: 'p,strong,i,em,sup,sub,span[class,style,id],a[class,style,id,href],img[src,alt,class],ul[class,style,id],li[class,style,id],ol[class,style],table[class,style],tr[class,style],td[class,style],thead,tbody',
         extended_valid_elements: 'i[class|id],span[class,id]',
         convert_urls: false,
         relative_urls: false,
