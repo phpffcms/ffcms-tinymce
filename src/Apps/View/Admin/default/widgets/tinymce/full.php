@@ -3,6 +3,7 @@
 ?>
 
 <script src="<?= \App::$Alias->scriptUrl ?>/vendor/tinymce/tinymce/tinymce.min.js"></script>
+<script src="<?= \App::$Alias->scriptUrl ?>/vendor/phpffcms/ffcms-assets/standalone/tinymce-codeeditor/ce.js"></script>
 
 <script>
     var callbackFun = null;
@@ -19,9 +20,9 @@
         plugins: [
             'advlist autolink lists link image imagetools charmap print preview anchor',
             'searchreplace visualblocks code',
-            'insertdatetime media table paste wordcount pagebreak codesample'
+            'insertdatetime media table paste wordcount pagebreak codesample codeeditor'
         ],
-        toolbar: 'formatselect | insert | bold italic subscript superscript forecolor backcolor blockquote | removeformat | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | pagebreak code',
+        toolbar: 'formatselect | insert | bold italic subscript superscript forecolor backcolor blockquote | removeformat | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | pagebreak codeeditor',
         image_advtab: true,
         visualblocks_default_state: true,
         end_container_on_empty_block: true,
