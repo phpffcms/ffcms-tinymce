@@ -10,6 +10,7 @@
     function setResponseUrl(url) {
         if (typeof(url) !== 'undefined' && url.length > 0) {
             callbackFun(url, {alt: url.substring(url.lastIndexOf('/')+1)});
+            
         }
     }
 
@@ -36,6 +37,7 @@
         language_url: '<?= \App::$Alias->scriptUrl ?>/vendor/phpffcms/ffcms-tinymce/assets/js/langs/' + script_lang + '.js',
         language: script_lang,
         file_picker_types: 'file image media',
+        paste_block_drop: true,
         file_picker_callback: function(callback, value, meta) {
             callbackFun = callback;
             /** calc new widnow size & position */
