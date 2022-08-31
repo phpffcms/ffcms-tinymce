@@ -86,7 +86,7 @@
                         if (options.isClosing === true) {
                             res = "</div>" + res;
                         } else {
-                            res = res.replace('>', ' class="table table-bordered">');
+                            res = res.replace('>', ' class="table table-bordered w-100">');
                             res = '<div class="table-responsive">' + res;
                         }
                         return res;
